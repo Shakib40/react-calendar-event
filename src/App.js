@@ -19,34 +19,99 @@ export default function Calendar() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [viewMode, setViewMode] = useState("month");
 
+  // const dates = {
+  //   "2024-02-12": {
+  //     message: <div>PRESENT</div>,
+  //     type: "PRESENT",
+  //   },
+  //   "2024-02-13": {
+  //     message: <div>PRESENT</div>,
+  //     type: "PRESENT",
+  //   },
+
+  //   "2024-02-15": {
+  //     message: <div>PRESENT</div>,
+  //     type: "PRESENT",
+  //   },
+  //   "2024-02-16": {
+  //     message: <div>PRESENT</div>,
+  //     type: "PRESENT",
+  //   },
+  //   "2024-02-19": {
+  //     message: <div>SICK LEAVE</div>,
+  //     type: "ABSENT",
+  //   },
+  //   "2024-02-20": {
+  //     message: <div>SICK LEAVE</div>,
+  //     type: "ABSENT",
+  //   },
+  //   "2024-02-14": {
+  //     message: <div>PRESENT</div>,
+  //     type: "PRESENT",
+  //   },
+  // };
+
   const dates = {
-    "2024-02-12": {
-      message: <div>PRESENT</div>,
-      type: "PRESENT",
+    "2024-05-06": {
+      message: "Leave 1",
+      type: "EARNED_LEAVE",
+      status: "PENDING",
     },
-    "2024-02-13": {
-      message: <div>PRESENT</div>,
-      type: "PRESENT",
+    "2024-05-07": {
+      message: "Leave 1",
+      type: "EARNED_LEAVE",
+      status: "PENDING",
     },
-    "2024-02-14": {
-      message: <div>PRESENT</div>,
-      type: "PRESENT",
+    "2024-05-08": {
+      message: "Leave 1",
+      type: "EARNED_LEAVE",
+      status: "PENDING",
     },
-    "2024-02-15": {
-      message: <div>PRESENT</div>,
-      type: "PRESENT",
+    "2024-05-13": {
+      message: "Leave 2",
+      type: "EARNED_LEAVE",
+      status: "PENDING",
     },
-    "2024-02-16": {
-      message: <div>PRESENT</div>,
-      type: "PRESENT",
-    },
-    "2024-02-19": {
-      message: <div>SICK LEAVE</div>,
+    "2024-05-14": {
+      message: "message",
       type: "ABSENT",
     },
-    "2024-02-20": {
-      message: <div>SICK LEAVE</div>,
+    "2024-05-15": {
+      message: "message",
+      type: "PRESENT",
+    },
+    "2024-05-16": {
+      message: "message",
+      type: "PRESENT",
+    },
+    "2024-05-17": {
+      message: "message",
       type: "ABSENT",
+    },
+    "2024-05-21": {
+      message: "Holiday",
+      type: "HOLIDAY",
+      is_restricted: false,
+    },
+    "2024-05-22": {
+      message: "Holiday",
+      type: "HOLIDAY",
+      is_restricted: false,
+    },
+    "2024-05-28": {
+      message: "Holiday",
+      type: "HOLIDAY",
+      is_restricted: false,
+    },
+    "2024-05-29": {
+      message: "Holiday",
+      type: "HOLIDAY",
+      is_restricted: false,
+    },
+    "2024-05-30": {
+      message: "Holiday",
+      type: "HOLIDAY",
+      is_restricted: false,
     },
   };
 
@@ -106,7 +171,8 @@ export default function Calendar() {
               id="viewMode"
               value={viewMode}
               onChange={(e) => switchViewMode(e.target.value)}
-              className="select">
+              className="select"
+            >
               <option value="day">Day</option>
               <option value="week">Week</option>
               <option value="month">Month</option>
@@ -139,7 +205,8 @@ export default function Calendar() {
                 dates[format(day, "yyyy-MM-dd")]?.type === "PRESENT" &&
                 "bg-[#F0FDF4]"
               }`}
-              onClick={() => handleDateChange(day)}>
+              onClick={() => handleDateChange(day)}
+            >
               <div>{format(day, "d")}</div>
               {dates[format(day, "yyyy-MM-dd")] && (
                 <div>{dates[format(day, "yyyy-MM-dd")]?.message}</div>
@@ -150,12 +217,14 @@ export default function Calendar() {
         <div className="flex justify-end space-x-2 border border-gray-300 p-4">
           <button
             onClick={goToPreviousMonth}
-            className="button border border-gray-300 p-2 rounded">
+            className="button border border-gray-300 p-2 rounded"
+          >
             Previous Month
           </button>
           <button
             onClick={goToNextMonth}
-            className="button border border-gray-300 p-2 rounded">
+            className="button border border-gray-300 p-2 rounded"
+          >
             Next Month
           </button>
         </div>
